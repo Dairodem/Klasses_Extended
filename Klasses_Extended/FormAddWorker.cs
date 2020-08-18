@@ -13,19 +13,11 @@ namespace Klasses_Extended
     public partial class FormAddWorker : Form
     {
         public string[] genders = new string[] { "Man", "Vrouw" };
+
         public FormAddWorker()
         {
             InitializeComponent();
         }
-        public string MyName
-        {
-            get { return txtName.Text; }
-        }
-        public string Gender
-        {
-            get { return cbGender.SelectedItem.ToString(); }
-        }
-
         private void FormAddWorker_Load(object sender, EventArgs e)
         {
             cbGender.Items.AddRange(genders);
@@ -34,9 +26,5 @@ namespace Klasses_Extended
             
         }
 
-        public void btnAddWorker_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

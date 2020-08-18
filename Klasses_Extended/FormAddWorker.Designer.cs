@@ -44,7 +44,6 @@
             this.btnAddWorker.TabIndex = 0;
             this.btnAddWorker.Text = "Toevoegen";
             this.btnAddWorker.UseVisualStyleBackColor = true;
-            this.btnAddWorker.Click += new System.EventHandler(this.btnAddWorker_Click);
             // 
             // txtName
             // 
@@ -89,6 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(267, 287);
             this.Controls.Add(this.lblGender);
             this.Controls.Add(this.lblName);

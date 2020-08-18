@@ -178,6 +178,7 @@
             this.btnAddAttractie.TabIndex = 2;
             this.btnAddAttractie.Text = "Toevoegen...";
             this.btnAddAttractie.UseVisualStyleBackColor = true;
+            this.btnAddAttractie.Click += new System.EventHandler(this.btnAddAttractie_Click);
             // 
             // gbInfoAttractie
             // 

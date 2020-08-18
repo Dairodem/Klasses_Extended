@@ -14,6 +14,7 @@ namespace Klasses_Extended
     {
         Pretpark myPark = new Pretpark("CottonCandyMountain");
         FormAddWorker addWorkerForm;
+        FormAddAttraction addAttractionForm;
 
         public Oefening1()
         {
@@ -29,7 +30,6 @@ namespace Klasses_Extended
             lbAttracties.DataSource = myPark.AttractieList;
             gbPretpark.Text = myPark.Name;
         }
-
         private void btnAddWerker_Click(object sender, EventArgs e)
         {
             addWorkerForm = new FormAddWorker();
@@ -44,23 +44,13 @@ namespace Klasses_Extended
             lbWerknemers.DataSource = null;
             lbWerknemers.DataSource = myPark.WerknemersList;
         }
-
         private void btnRemoveWerker_Click(object sender, EventArgs e)
         {
             myPark.WerknemersList.RemoveAt(lbWerknemers.SelectedIndex);
         }
-        public void AddWorker(string name, string gender, DateTime birthdate)
-        {
-            myPark.WerknemersList.Add(new Werknemer(name, gender, birthdate));
-        }
-        private void UpdateList(List<Attractie> list)
-        {
-
-        }
-
         private void lbWerknemers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbWerknemers.SelectedIndex >= 0)
+            if (lbWerknemers.SelectedIndex >= 0 && myPark.WerknemersList.Count > 0)
             {
                 lblNameW.Text = "Naam:       " + myPark.WerknemersList[lbWerknemers.SelectedIndex].Name;
                 lblGender.Text = "Geslacht:   " + myPark.WerknemersList[lbWerknemers.SelectedIndex].Gender;
@@ -68,10 +58,9 @@ namespace Klasses_Extended
 
             }
         }
-
         private void lbAttracties_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbWerknemers.SelectedIndex >= 0)
+            if (lbAttracties.SelectedIndex >= 0)
             {
                 lblNameA.Text = "Naam: " + myPark.AttractieList[lbAttracties.SelectedIndex].Name;
                 lblColor.Text = "Kleur:         " + myPark.AttractieList[lbAttracties.SelectedIndex].Color;
@@ -80,6 +69,21 @@ namespace Klasses_Extended
 
             }
 
+        }
+
+        private void btnAddAttractie_Click(object sender, EventArgs e)
+        {
+            addAttractionForm = new FormAddAttraction();
+            addAttractionForm.Show();
+            addAttractionForm.btnAddAttraction.Click += new EventHandler(btnAddAttraction_Click);
+
+        }
+        private void btnAddAttraction_Click(object sender, EventArgs e)
+        {
+            myPark.AttractieList.Add(new Attractie(addAttractionForm.txtName.Text, addAttractionForm.cbColors.SelectedItem.ToString(),(int)addAttractionForm.numAge.Value,(int)addAttractionForm.numCap.Value));
+            addAttractionForm.Close();
+            lbAttracties.DataSource = null;
+            lbAttracties.DataSource = myPark.AttractieList;
         }
     }
 }
