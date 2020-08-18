@@ -39,9 +39,13 @@ namespace Klasses_Extended
             Afspraak afspraak;
 
             // (*)  Controleert of er een andere datum is ingegeven of vandaag (of in het verleden)
-            if (dtpDate.Value.Day <= DateTime.Now.Date.Day)
+            if (dtpDate.Value.Date <= DateTime.Now.Date)
             {
                 numHour.Value = DateTime.Now.Hour;
+                if (numHour.Value > 19)
+                {
+                    numHour.Value = 7;
+                }
                 dtpDate.Value = DateTime.Now.Date.AddDays(1);
 
                 afspraak = new Afspraak(txtInfo.Text, dtpDate.Value, (int)numHour.Value);
